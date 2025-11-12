@@ -49,7 +49,6 @@ int main()
     else
     {
         double delta = pow(b, 2) - (4 * a * c);
-        printf("%lf\n", delta);
 
         if (delta < 0)
         {
