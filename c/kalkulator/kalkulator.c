@@ -3,10 +3,10 @@
 #include <stdbool.h>
 
 int enterNumber(double *pliczba);
-double suma(double x, double y);
-double roznica(double x, double y);
-double iloczyn(double x, double y);
-int iloraz(double x, double y, double *pwynik);
+double suma(const double *x, const double *y);
+double roznica(const double *x, const double *y);
+double iloczyn(const double *x, const double *y);
+int iloraz(const double *x, const double *y, double *pwynik);
 
 int main()
 {
@@ -35,16 +35,16 @@ int main()
         switch (znak)
         {
         case '+':
-            wynik = suma(a, b);
+            wynik = suma(&a, &b);
             break;
         case '-':
-            wynik = roznica(a, b);
+            wynik = roznica(&a, &b);
             break;
         case '*':
-            wynik = iloczyn(a, b);
+            wynik = iloczyn(&a, &b);
             break;
         case '/':
-            stan = iloraz(a, b, &wynik);
+            stan = iloraz(&a, &b, &wynik);
             break;
         }
 
@@ -70,26 +70,26 @@ int enterNumber(double *pliczba)
     return scanf("%lf", pliczba);
 }
 
-double suma(double x, double y)
+double suma(const double *x, const double *y)
 {
-    return (x + y);
+    return (*x + *y);
 }
 
-double roznica(double x, double y)
+double roznica(const double *x, const double *y)
 {
-    return (x - y);
+    return (*x - *y);
 }
 
-double iloczyn(double x, double y)
+double iloczyn(const double *x, const double *y)
 {
-    return (x * y);
+    return (*x * *y);
 }
 
-int iloraz(double x, double y, double *pwynik)
+int iloraz(const double *x, const double *y, double *pwynik)
 {
-    if (y != 0)
+    if (*y != 0)
     {
-        *pwynik = x / y;
+        *pwynik = (*x / *y);
         return 1;
     }
     else
